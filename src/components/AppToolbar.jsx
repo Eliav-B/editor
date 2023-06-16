@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import {detect} from 'detect-browser';
 
-import {MdFileDownload, MdOpenInBrowser, MdSettings, MdLayers, MdHelpOutline, MdFindInPage, MdAssignmentTurnedIn} from 'react-icons/md'
+import {MdFileDownload, MdOpenInBrowser, MdSettings, MdLayers, MdHelpOutline, MdFindInPage, MdAssignmentTurnedIn, MdLightMode, MdDarkMode} from 'react-icons/md'
 
 
 import logoImage from 'maputnik-design/logos/logo-color.svg'
@@ -124,7 +124,8 @@ export default class AppToolbar extends React.Component {
       open: false,
       add: false,
       export: false,
-    }
+    },
+    lightMode: true
   }
 
   handleSelection(val) {
@@ -279,6 +280,13 @@ export default class AppToolbar extends React.Component {
             <IconText>Take the Maputnik Survey</IconText>
           </ToolbarLinkHighlighted>
         </div>
+        <ToolbarAction wdKey="nav:mode" onClick={() => this.setState({
+          ...this.state,
+          lightMode: !this.state.lightMode
+        })}>
+          {this.state.lightMode ? <MdDarkMode /> : <MdLightMode />}
+          <IconText>Change Mode</IconText>
+        </ToolbarAction>
       </div>
     </nav>
   }
